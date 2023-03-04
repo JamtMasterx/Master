@@ -1,0 +1,15 @@
+###Codigo del compose donde se agrega la tabla de ideas por turnos.
+
+<table>
+  <tr>
+    <th>Turno</th>
+    <th>Cantidad</th>
+  </tr>
+  @{variables('Turnos')}
+    <td>Weekly</td>
+    <td>@{length(outputs('Get_TotalIdeasWeekly')?['body/value'])}</td>
+  <tr>
+    <th>Total</th>
+    <th>@{variables('TotalIdeas')}</th>
+  </tr>
+</table>
