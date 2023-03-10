@@ -13,3 +13,53 @@
     <th>@{variables('TotalIdeas')}</th>
   </tr>
 </table>
+
+####Codigo de busqueda de happy puntos cuando se buscaba total de happy puntos y happy puntos disponibles
+
+Concurrent(
+    ClearCollect(
+        puntos_ideas;
+        Filter(
+            IdeasFE;
+            Codigo = txtemployee_1.Text
+        )
+    );
+    ClearCollect(
+        puntos_ideasTot;
+        Filter(
+            IdeasFE;
+            Codigo = txtemployee_1.Text;
+            Clasificación = "Canje" || Clasificación = "Idea de Mejora" || Clasificación = "Certificado" || Clasificación = "Safety Catch" || Clasificación = "Evento Kaizen"
+        )
+    )
+);;
+Concurrent(
+    Set(
+        asociadobuscando;
+        LookUp(
+            HC;
+            CODIGO = txtemployee_1.Text
+        )
+    );
+    Set(
+        totalidisp;
+        Sum(
+            puntos_ideas;
+            HappyPuntos
+        ) - Sum(
+            puntos_ideas;
+            Canjeados
+        )
+    )
+);;
+Set(
+    totali;
+    Sum(
+        puntos_ideasTot;
+        HappyPuntos
+    ) - Sum(
+        puntos_ideasTot;
+        Canjeados
+    )
+);;
+UpdateContext({lblerroasociado: 1})
