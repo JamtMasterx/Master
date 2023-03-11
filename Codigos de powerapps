@@ -63,3 +63,58 @@ Set(
     )
 );;
 UpdateContext({lblerroasociado: 1})
+
+### Anterior forma de consultar los happy puntos.
+
+UpdateContext({resettext: !resettext});
+UpdateContext({resettext: !resettext});
+
+Clear(colAllListHP);
+With(
+   {
+      wSets: 
+      With(
+         {
+            wLimits: 
+            With(
+               {
+                  wLimit: 
+                  Sort(
+                     IdeasFE,
+                     ShadowID,
+                     SortOrder.Descending
+                    )
+               },
+               RoundDown(
+                  First(wLimit).ShadowID / 2000,
+                  0
+               ) + 1
+            )
+         },
+         AddColumns(
+            RenameColumns(
+               Sequence(
+                  wLimits,
+                  0,
+                  2000
+               ),
+               "Value",
+               "LowID"
+            ),
+            "HighID",
+            LowID + 2000
+         )
+      )
+   },
+   ForAll(
+      wSets As MaxMin,
+      Collect(
+         colAllListHP,
+         Filter(
+         IdeasFE,
+         ShadowID > MaxMin.LowID && ShadowID <= MaxMin.HighID && 
+         Fecha >= FI.SelectedDate && Fecha <= FF.SelectedDate
+         )
+      )
+   )
+)
