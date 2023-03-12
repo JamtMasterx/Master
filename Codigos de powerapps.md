@@ -14,7 +14,7 @@
   </tr>
 </table>
 
-####Codigo de busqueda de happy puntos cuando se buscaba total de happy puntos y happy puntos disponibles
+# *Codigo de busqueda de happy puntos cuando se buscaba total de happy puntos y happy puntos disponibles*
 
 Concurrent(
     ClearCollect(
@@ -64,7 +64,7 @@ Set(
 );;
 UpdateContext({lblerroasociado: 1})
 
-### Anterior forma de consultar los happy puntos.
+# *Anterior forma de consultar los happy puntos.*
 
 UpdateContext({resettext: !resettext});
 UpdateContext({resettext: !resettext});
