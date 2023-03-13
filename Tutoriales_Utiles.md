@@ -1,8 +1,9 @@
-#Link de tutoriales utiles
+# *Link de tutoriales utiles*
 
 La idea es colocar diferentes links de tutoriales diversos sobre diferentes cosas que me han servido.
 
-Exportar galeria powerapps a excel = https://www.youtube.com/watch?v=97D--j0IRno&ab_channel=Mart%C3%ADnGesualdo
+## Exportar galeria powerapps a excel
+https://www.youtube.com/watch?v=97D--j0IRno&ab_channel=Mart%C3%ADnGesualdo
 
 Nota de ese tutorial: 
 
